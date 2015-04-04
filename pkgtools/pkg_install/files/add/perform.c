@@ -151,6 +151,14 @@ compatible_platform(const char *opsys, const char *host, const char *package)
 {
     int i = 0;
 
+    /*
+     * Ignore version checks for our Darwin packages.  They are backwards
+     * compatible, and thanks to PREFER_PKGSRC are often forward compatible
+     * too.  REQUIRES should weed out any missing library support.
+     */
+    if (strcmp(opsys, "Darwin") == 0)
+	return 1;
+
     /* returns 1 if host and package operating system match */
     if (strcmp(host, package) == 0)
 	return 1;
