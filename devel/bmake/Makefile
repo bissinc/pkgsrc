@@ -38,11 +38,14 @@ CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFDIR}
 # This section is incomplete, but the general idea is that we should use the
 # same shell that was selected by bootstrap.
 #
-.if ${OPSYS} == "SunOS" && exists(/usr/bin/bash)
-CONFIGURE_ARGS+=	--with-defshell=/usr/bin/bash
-.elif ${TOOLS_PLATFORM.sh:M*/bin/pdksh}
+.if ${TOOLS_PLATFORM.sh:M?*/bin/mksh}
+DEPENDS+=		mksh-[0-9]*:../../shells/mksh
+CONFIGURE_ARGS+=	--with-defshell=${PREFIX}/bin/mksh
+.elif ${TOOLS_PLATFORM.sh:M?*/bin/pdksh}
 DEPENDS+=		pdksh-[0-9]*:../../shells/pdksh
 CONFIGURE_ARGS+=	--with-defshell=${PREFIX}/bin/pdksh
+.elif ${OPSYS} == "SunOS" && exists(/usr/bin/bash)
+CONFIGURE_ARGS+=	--with-defshell=/usr/bin/bash
 .endif
 
 MAKE_ENV.Interix+=	XDEFS=-DUSE_SELECT
