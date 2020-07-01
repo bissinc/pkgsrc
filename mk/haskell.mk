@@ -1,4 +1,4 @@
-# $NetBSD: haskell.mk,v 1.21 2020/06/21 22:21:02 rillig Exp $
+# $NetBSD: haskell.mk,v 1.25 2020/06/29 22:00:58 rillig Exp $
 #
 # This Makefile fragment handles Haskell Cabal packages.
 # See: http://www.haskell.org/cabal/
@@ -95,6 +95,7 @@ HASKELL_MK=	# defined
 
 .include "../../mk/bsd.fast.prefs.mk"
 
+HS_UPDATE_PLIST?=	no
 
 # Declare HASKELL_COMPILER as one of BUILD_DEFS variables. See
 # ../../mk/misc/show.mk
@@ -218,9 +219,11 @@ CONFIGURE_ARGS+=	-O${HASKELL_OPTIMIZATION_LEVEL}
 
 .if !exists(${PKGDIR}/PLIST)
 _HS_PLIST_STATUS=	missing
+.elif !${${GREP} "." ${PKGDIR}/PLIST || ${TRUE}:L:sh}
+_HS_PLIST_STATUS=	missing
 .elif ${${GREP} HS_INTF ${PKGDIR}/PLIST || ${TRUE}:L:sh}
 _HS_PLIST_STATUS=	lib-ok
-.elif !${${GREP} "/package-id" ${PKGDIR}/PLIST || ${TRUE}:L:sh}
+.elif !${${GREP} "/package-description" ${PKGDIR}/PLIST || ${TRUE}:L:sh}
 _HS_PLIST_STATUS=	plain
 .else
 _HS_PLIST_STATUS=	outdated
@@ -231,7 +234,6 @@ _HS_PLIST_STATUS=	outdated
 # the PLIST.
 #
 .if ${_HS_PLIST_STATUS} == lib-ok || ${_HS_PLIST_STATUS} == missing
-
 _HASKELL_PL_INTF=	${_HASKELL_PKG_ID_FILE:H:S,^${PREFIX}/,,}
 _HASKELL_PL_IMPL_AWK=	prev == "import-dirs:" { dir = $$1; exit }
 _HASKELL_PL_IMPL_AWK+=	{ prev = $$0 }
@@ -244,35 +246,36 @@ _HASKELL_PL_PKGID_CMD=	${CAT} ${DESTDIR}${_HASKELL_PKG_ID_FILE}
 _HASKELL_PL_PKGID=	${_HASKELL_PL_PKGID_CMD:sh}
 _HASKELL_PL_VER=	${_HASKELL_VERSION:S,-,,}
 
-PLIST_SUBST+=		HS_INTF=${_HASKELL_PL_INTF}
-PLIST_SUBST+=		HS_IMPL=${_HASKELL_PL_IMPL}
-PLIST_SUBST+=		HS_DOCS=${_HASKELL_PL_DOCS}
-PLIST_SUBST+=		HS_PLATFORM=${_HASKELL_PL_PLATFORM}
-PLIST_SUBST+=		HS_PKGID=${_HASKELL_PL_PKGID}
-PLIST_SUBST+=		HS_VER=${_HASKELL_PL_VER}
-PRINT_PLIST_AWK+=	{ sub("^${_HASKELL_PL_INTF}",       "$${HS_INTF}") }
-PRINT_PLIST_AWK+=	{ sub("^${_HASKELL_PL_IMPL}",       "$${HS_IMPL}") }
-PRINT_PLIST_AWK+=	{ sub("^${_HASKELL_PL_DOCS}",       "$${HS_DOCS}") }
-PRINT_PLIST_AWK+=	{ sub("/${_HASKELL_PL_PLATFORM}/", "/$${HS_PLATFORM}/") }
-PRINT_PLIST_AWK+=	{ sub( "${_HASKELL_PL_PKGID}",      "$${HS_PKGID}") }
-PRINT_PLIST_AWK+=	{ sub( "${_HASKELL_PL_VER}",        "$${HS_VER}") }
+_HS_PLIST_SUBST+=	HS_INTF=${_HASKELL_PL_INTF}
+_HS_PLIST_SUBST+=	HS_IMPL=${_HASKELL_PL_IMPL}
+_HS_PLIST_SUBST+=	HS_DOCS=${_HASKELL_PL_DOCS}
+_HS_PLIST_SUBST+=	HS_PLATFORM=${_HASKELL_PL_PLATFORM}
+_HS_PLIST_SUBST+=	HS_PKGID=${_HASKELL_PL_PKGID}
+_HS_PLIST_SUBST+=	HS_VER=${_HASKELL_PL_VER}
+PLIST_SUBST+=		${exists(${DESTDIR}${_HASKELL_PKG_DESCR_FILE}):?${_HS_PLIST_SUBST}:}
 
-HS_UPDATE_PLIST?=	no
-
-.  if ${HS_UPDATE_PLIST} != no && ${_HS_PLIST_STATUS} == missing
-GENERATE_PLIST+= 	${MAKE} print-PLIST > ${PKGDIR}/PLIST;
-.  endif
+_HS_PRINT_PLIST_AWK+=	{ sub("^${_HASKELL_PL_INTF}",       "$${HS_INTF}") }
+_HS_PRINT_PLIST_AWK+=	{ sub("^${_HASKELL_PL_IMPL}",       "$${HS_IMPL}") }
+_HS_PRINT_PLIST_AWK+=	{ sub("^${_HASKELL_PL_DOCS}",       "$${HS_DOCS}") }
+_HS_PRINT_PLIST_AWK+=	{ sub("/${_HASKELL_PL_PLATFORM}/", "/$${HS_PLATFORM}/") }
+_HS_PRINT_PLIST_AWK+=	{ sub( "${_HASKELL_PL_PKGID}",      "$${HS_PKGID}") }
+_HS_PRINT_PLIST_AWK+=	{ sub( "${_HASKELL_PL_VER}",        "$${HS_VER}") }
+PRINT_PLIST_AWK+=	${exists(${DESTDIR}${_HASKELL_PKG_DESCR_FILE}):?${_HS_PRINT_PLIST_AWK}:}
 .endif
 
 .if ${_HS_PLIST_STATUS} == missing || ${_HS_PLIST_STATUS} == outdated
+.  if ${HS_UPDATE_PLIST} == yes
+GENERATE_PLIST+= 	${MAKE} print-PLIST > ${PKGDIR}/PLIST;
+.  endif
 GENERATE_PLIST+= \
 	cd ${DESTDIR:Q}${PREFIX:Q} && \
 		${FIND} * \( -type f -o -type l \) | ${SORT};
-PLIST_SRC=	# none, because the PLIST file is outdated or missing
-.  if ${_HS_PLIST_STATUS} == outdated && ${HS_UPDATE_PLIST} == no
+PLIST_SRC=	# none
+.endif
+
+.if ${_HS_PLIST_STATUS} == outdated && ${HS_UPDATE_PLIST} == no
 WARNINGS+=	"[haskell.mk] The PLIST format is outdated."
 WARNINGS+=	"[haskell.mk] Set HS_UPDATE_PLIST=yes to update it automatically."
-.  endif
 .endif
 
 # Define configure target. We might not have any working Haskell
