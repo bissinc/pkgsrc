@@ -1,6 +1,5 @@
-# $NetBSD: Makefile.common,v 1.44 2020/05/07 20:21:41 rillig Exp $
+# $NetBSD: Makefile.common,v 1.46 2020/07/02 10:45:38 wiz Exp $
 # used by lang/clang/Makefile
-# used by lang/clang-static-analyzer/Makefile
 # used by lang/clang-tools-extra/Makefile
 
 .include "../../lang/llvm/version.mk"
@@ -24,8 +23,6 @@ CMAKE_ARGS+=	-DLLVM_CONFIG=${LLVM_CONFIG_PATH:Q}
 CMAKE_ARGS+=	-DCMAKE_BUILD_TYPE=Release
 CMAKE_ARGS+=	-DCMAKE_C_COMPILER=${CC:Q}
 CMAKE_ARGS+=	-DCMAKE_CXX_COMPILER=${CXX:Q}
-# XXX can't disable static-analyzer without also disabling ARCMT
-CMAKE_ARGS+=	-DCLANG_ENABLE_ARCMT=OFF
 
 .include "../../mk/compiler.mk"
 
@@ -71,7 +68,7 @@ REPLACE_PYTHON+=	www/builtins.py
 
 .if ${OPSYS} == "NetBSD" && ${PKGSRC_COMPILER:Mclang}
 # command to check if clang is using libc++ or libstdc++
-LIBCPP_CHECK!= \
+LIBCPP_CHECK!=	\
 	printf '%s\n' \
 		'\#include <ciso646>' \
 		'\#ifdef _LIBCPP_VERSION' \
