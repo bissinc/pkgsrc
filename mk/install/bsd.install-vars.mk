@@ -63,10 +63,11 @@ TOOLS_CREATE+=		ctfconvert
 TOOLS_PATH.ctfconvert=	${TOOLS_PLATFORM.ctfconvert}
 TOOLS_ARGS.ctfconvert?=	-i
 CTFCONVERT?=		ctfconvert
-CTF_FILES_SKIP?=	# none
+CTF_FILES_SKIP?=	share/* ${PKGMANDIR}/*
 .endif
 
-STRIP_DEBUG?=	no
+STRIP_DEBUG?=		no
+STRIP_FILES_SKIP?=	share/* ${PKGMANDIR}/*
 
 .if !empty(_MANCOMPRESSED:M[yY][eE][sS]) && empty(_MANZ:M[yY][eE][sS])
 USE_TOOLS+=	gunzip
