@@ -1,10 +1,9 @@
-# $NetBSD: Makefile,v 1.567 2020/05/21 15:53:30 taca Exp $
+# $NetBSD: Makefile,v 1.570 2020/07/07 23:43:58 nia Exp $
 #
 
 COMMENT=	Programming languages
 
 SUBDIR+=	Cg-compiler
-SUBDIR+=	LuaJIT
 SUBDIR+=	LuaJIT2
 SUBDIR+=	R-sourcetools
 SUBDIR+=	STk
@@ -30,7 +29,6 @@ SUBDIR+=	chicken5
 SUBDIR+=	cim
 SUBDIR+=	cint
 SUBDIR+=	clang
-SUBDIR+=	clang-static-analyzer
 SUBDIR+=	clang-tools-extra
 SUBDIR+=	classpath
 SUBDIR+=	classpath-gui
@@ -150,6 +148,7 @@ SUBDIR+=	llvm
 SUBDIR+=	lua51
 SUBDIR+=	lua52
 SUBDIR+=	lua53
+SUBDIR+=	lua54
 SUBDIR+=	lush
 SUBDIR+=	maude
 SUBDIR+=	mawk

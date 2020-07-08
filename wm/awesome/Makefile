@@ -1,8 +1,8 @@
-# $NetBSD: Makefile,v 1.71 2020/03/10 22:11:06 wiz Exp $
+# $NetBSD: Makefile,v 1.73 2020/07/02 10:27:21 nia Exp $
 
 DISTNAME=	awesome-4.3
 PKGREVISION=	3
-CATEGORIES=	wm
+CATEGORIES=	wm lua
 EXTRACT_SUFX=	.tar.xz
 MASTER_SITES=	${MASTER_SITE_GITHUB:=awesomeWM/}
 GITHUB_RELEASE=	v${PKGVERSION_NOREV}
@@ -25,6 +25,9 @@ PKG_SYSCONFSUBDIR=	xdg/awesome
 
 CONFIGURE_DIRS=	build
 CMAKE_ARG_PATH=	${WRKSRC}
+
+# lua-gi
+LUA_VERSIONS_ACCEPTED=	53 52 51
 
 .include "../../lang/lua/luaversion.mk"
 

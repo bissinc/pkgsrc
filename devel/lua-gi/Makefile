@@ -1,10 +1,10 @@
-# $NetBSD: Makefile,v 1.11 2020/03/08 16:42:25 bsiegert Exp $
+# $NetBSD: Makefile,v 1.13 2020/07/02 10:26:17 nia Exp $
 
 DISTNAME=	lgi-${VERSION}
 PKGNAME=	${LUA_PKGPREFIX}-gi-${VERSION}
 PKGREVISION=	1
 VERSION=	0.9.2
-CATEGORIES=	devel
+CATEGORIES=	devel lua
 MASTER_SITES=	${MASTER_SITE_GITHUB:=pavouk/}
 GITHUB_PROJECT=	lgi
 
@@ -18,6 +18,8 @@ USE_TOOLS+=	pkg-config gmake
 
 MAKE_FLAGS+=	PREFIX=${PREFIX}
 MAKE_FLAGS+=	LUA_VERSION=${_LUA_DOT_VERSION}
+
+LUA_VERSIONS_ACCEPTED=	53 52 51
 
 .include "../../devel/glib2/buildlink3.mk"
 .include "../../devel/libffi/buildlink3.mk"

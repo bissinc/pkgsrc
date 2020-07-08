@@ -1,4 +1,4 @@
-# $NetBSD: options.mk,v 1.24 2020/03/30 11:07:18 nia Exp $
+# $NetBSD: options.mk,v 1.26 2020/07/04 11:34:59 nia Exp $
 
 PKG_OPTIONS_VAR=	PKG_OPTIONS.weechat
 # mk/curses will handle wide-curses
@@ -24,7 +24,7 @@ CMAKE_ARGS+=	-DENABLE_PYTHON=OFF
 .endif
 
 .if !empty(PKG_OPTIONS:Mlua)
-LUA_VERSIONS_INCOMPATIBLE=	52
+LUA_VERSIONS_ACCEPTED=	53 52 51
 .include "../../lang/lua/buildlink3.mk"
 CMAKE_ARGS+=	-DENABLE_LUA=ON
 PLIST.lua=	yes

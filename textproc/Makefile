@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.1148 2020/06/18 02:59:57 gutteridge Exp $
+# $NetBSD: Makefile,v 1.1157 2020/07/08 17:00:03 nia Exp $
 #
 
 COMMENT=	Text processing utilities (does not include desktop publishing)
@@ -230,8 +230,10 @@ SUBDIR+=	go-diff
 SUBDIR+=	go-glob
 SUBDIR+=	go-goldmark
 SUBDIR+=	go-inflect
+SUBDIR+=	go-kr-text
 SUBDIR+=	go-md2man
 SUBDIR+=	go-mmark
+SUBDIR+=	go-org
 SUBDIR+=	go-prose
 SUBDIR+=	go-regexp2
 SUBDIR+=	go-runewidth
@@ -457,9 +459,16 @@ SUBDIR+=	lout
 SUBDIR+=	lowdown
 SUBDIR+=	lq-sp
 SUBDIR+=	lua-cjson
+SUBDIR+=	lua-cmark
+SUBDIR+=	lua-dkjson
+SUBDIR+=	lua-etlua
 SUBDIR+=	lua-expat
 SUBDIR+=	lua-lustache
+SUBDIR+=	lua-markdown
+SUBDIR+=	lua-rapidjson
 SUBDIR+=	lua-slnunicode
+SUBDIR+=	lua-stringy
+SUBDIR+=	lua-utf8
 SUBDIR+=	lua-xapian
 SUBDIR+=	lucene++
 SUBDIR+=	makeindexk
