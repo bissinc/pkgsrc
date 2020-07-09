@@ -1,4 +1,4 @@
-aalib			Enable aalib support.
+ealib			Enable aalib support.
 abook			Enable abook support.
 acl			Enable POSIX ACL support.
 adobe-cidfonts		Select Adobe-fonts.
@@ -302,6 +302,7 @@ gtksourceview		Enable gtksourceview support.
 gtksourceview2		Enable gtksourceview2 support.
 gtkspell		Enable gtkspell support.
 gtkwave-tcl		Enable tcl for gtkwave.
+gtools			Enable gtools support.
 guile			Enable support for GUILE.
 gvfs                    Enable GVFS support.
 gzip			Enable compression using gzip.
@@ -483,6 +484,7 @@ lprng-suid		Install LPRng executables setuid root.
 lsof-less-secure-sockets	If 'lsof-more-secure' is set, allow all sockets to be viewed at all times.
 lsof-more-secure	Only allow root to view all open files with lsof.
 lua			Enable Lua support.
+luajit			Enable Luajit support.
 luit			Enable luit support.
 lwt			Enable Lwt support.	
 lynx			Use and enable support for the lynx browser.
@@ -568,6 +570,24 @@ nfdump-sflow		Build sflow collector sfcpad.
 nghttp2-asio		Build the nghttp2 ASIO C++ library.
 nghttp2-tools		Build the supplied nghttp2 apps and tools.
 nginx			Enable support for Nginx web server.
+nginx-auth-request	Enable nginx http auth request module.
+nginx-flv		Enable support for Nginx-flv module.
+nginx-form-input	Enable the form-input nginx module.
+nginx-image-filter	Enable nginx image-filter module.
+nginx-mail-proxy	Enable nginx mail-proxy module. 
+nginx-modsecurity-connector	Enable modesecurity-nginx-connector for nginx.
+nginx-openresty-echo	Enable nginx openresty echo module.
+nginx-openresty-set-misc	Enable nginx openresty set-misc module.
+nginx-openresty-array-var	Enable nginx openresty array-var module.
+nginx-openresty-encrypted-session	Enable nginx openresty encrypted-session module.
+nginx-openresty-headers-more	Enable nginx openresty headers-mode module.
+nginx-push		Enable support for http_push_module in nginx.
+nginx-realip		Enable realip support in nginx.
+nginx-secure-link	Enable the nginx secure link module.
+nginx-status		Enable nginx http_status module.
+nginx-sub		Enable nginx sub-module support. 
+nginx-uwsgi		Enable uwsgi_params in nginx.
+nginx-dav		Enable webdav module in nginx.
 ninja-build		Enable build by ninja-build.
 nis			Enable Network Information Service / Yellow Pages / YP.
 nls			Use native language support.
@@ -830,7 +850,6 @@ vice-fullscreen		Enable full-screen support.
 vice-hwscaling		Enable hardware-assisted screen scaling.
 vidix			Enable VIDIX (Video Interface for *niX support).
 viewvc-php		Use php to colorize .php and .inc files.
-virtfs-proxy-helper	Enable virtfs-proxy-helper support (Linux only).
 vlc-skins		Enable skins support in VLC.
 vorbis			Enable Ogg Vorbis support.
 vulkan			Enable support for the Vulkan 3D and compute API.
@@ -895,3 +914,4 @@ zlib			Enable support for zlib compression.
 zrtp			Enable ZRTP support.
 zsh-multibyte		Enable multibyte support in Zsh.
 zziplib			Enable zip support using zziplib.
+
