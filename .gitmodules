@@ -1,7 +1,7 @@
-[submodule "joyent"]
-	path = joyent
-	url = git://github.com/joyent/pkgsrc-joyent.git
+[submodule "bissinc"]
+	path = bissinc
+	url = git://github.com/bissinc/pkgsrc-joyent.git
 [submodule "wip"]
 	path = wip
-	url = git://github.com/joyent/pkgsrc-wip.git
+	url = git://github.com/bissinc/pkgsrc-wip.git
 	branch = 2020Q2
