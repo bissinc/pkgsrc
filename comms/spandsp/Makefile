@@ -1,32 +1,38 @@
-# $NetBSD: Makefile,v 1.14 2021/12/08 16:03:35 adam Exp $
-#
+# $NetBSD$
 
-DISTNAME=	spandsp-0.0.6pre21
-PKGREVISION=	6
+GITHUB_PROJECT=	spandsp
+GITHUB_TAG=	284fe91dd068d0cf391139110fdc2811043972b9
+DISTNAME=	284fe91dd068d0cf391139110fdc2811043972b9
+PKGNAME=	${GITHUB_PROJECT}-${DISTNAME}
 CATEGORIES=	comms
-MASTER_SITES=	https://www.soft-switch.org/downloads/spandsp/
-EXTRACT_SUFX=	.tgz
+MASTER_SITES=	${MASTER_SITE_GITHUB:=freeswitch/}
+DIST_SUBDIR=	${GITHUB_PROJECT}
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
-HOMEPAGE=	https://www.soft-switch.org/downloads/spandsp/
+HOMEPAGE=	https://github.com/freeswitch/spandsp/
 COMMENT=	Library of DSP functions for telephony
-LICENSE=	gnu-lgpl-v2.1
+LICENSE=	gnu-gpl-v2
 
-WRKSRC=		${WRKDIR}/spandsp-0.0.6
+WRKSRC=		${WRKDIR}/spandsp-284fe91dd068d0cf391139110fdc2811043972b9
 GNU_CONFIGURE=	yes
-USE_TOOLS+=	gsed pkg-config
-USE_LANGUAGES=	c c++
 USE_LIBTOOL=	yes
+USE_TOOLS+=	pkg-config automake autoconf
+USE_LANGUAGES=	c c++
 
 PKGCONFIG_OVERRIDE+=	spandsp.pc.in
 
-INSTALLATION_DIRS=	share/doc/${PKGBASE}
+CONFIGURE_ARGS+=	--enable-mmx --enable-ssse3 --enable-sse4-1 --enable-sse4-2
+CONFIGURE_ARGS+=	--enable-fixed-point
 
-.include "options.mk"
+post-extract:
+	cd ${WRKSRC}; autoupdate -f; autoreconf -if
+
+INSTALLATION_DIRS=	share/doc/${PKGBASE}
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/DueDiligence ${DESTDIR}${PREFIX}/share/doc/${PKGBASE}
 
 .include "../../graphics/tiff/buildlink3.mk"
 .include "../../mk/pthread.buildlink3.mk"
+
 .include "../../mk/bsd.pkg.mk"

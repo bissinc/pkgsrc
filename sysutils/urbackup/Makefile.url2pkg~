@@ -1,0 +1,12 @@
+# $NetBSD$
+
+DISTNAME=	urbackup-server-2.4.14
+CATEGORIES=	sysutils
+MASTER_SITES=	https://hndl.urbackup.org/Server/2.4.14/
+
+MAINTAINER=	john.barfield@joyent.com
+HOMEPAGE=	https://hndl.urbackup.org/Server/2.4.14/
+COMMENT=	Backup server
+LICENSE=	agpl-v3
+
+.include "../../mk/bsd.pkg.mk"

@@ -1,0 +1,189 @@
+$NetBSD$
+
+--- configure.orig	2020-07-14 17:17:48.000000000 +0000
++++ configure
+@@ -4702,14 +4702,14 @@ static char *f (char * (*g) (char **, in
+    These don't provoke an error unfortunately, instead are silently treated
+    as 'x'.  The following induces an error, until -std is added to get
+    proper ANSI mode.  Curiously '\x00'!='x' always comes out true, for an
+-   array size at least.  It's necessary to write '\x00'==0 to get something
++   array size at least.  It's necessary to write '\x00'=0 to get something
+    that's true only with -std.  */
+-int osf4_cc_array ['\x00' == 0 ? 1 : -1];
++int osf4_cc_array ['\x00' = 0 ? 1 : -1];
+ 
+ /* IBM C 6 for AIX is almost-ANSI by default, but it replaces macro parameters
+    inside strings and character constants.  */
+ #define FOO(x) 'x'
+-int xlc6_cc_array[FOO(a) == 'x' ? 1 : -1];
++int xlc6_cc_array[FOO(a) = 'x' ? 1 : -1];
+ 
+ int test (int i, double x);
+ struct s1 {int (*f) (int a);};
+@@ -5331,7 +5331,7 @@ else
+ /* end confdefs.h.  */
+ #include <ctype.h>
+ #include <stdlib.h>
+-#if ((' ' & 0x0FF) == 0x020)
++#if ((' ' & 0x0FF) = 0x020)
+ # define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
+ # define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))
+ #else
+@@ -6020,7 +6020,7 @@ else
+ /* end confdefs.h.  */
+ #include <ctype.h>
+ #include <stdlib.h>
+-#if ((' ' & 0x0FF) == 0x020)
++#if ((' ' & 0x0FF) = 0x020)
+ # define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
+ # define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))
+ #else
+@@ -6107,12 +6107,12 @@ else
+ 
+              struct s { _Bool s: 1; _Bool t; } s;
+ 
+-             char a[true == 1 ? 1 : -1];
+-             char b[false == 0 ? 1 : -1];
+-             char c[__bool_true_false_are_defined == 1 ? 1 : -1];
+-             char d[(bool) 0.5 == true ? 1 : -1];
++             char a[true = 1 ? 1 : -1];
++             char b[false = 0 ? 1 : -1];
++             char c[__bool_true_false_are_defined = 1 ? 1 : -1];
++             char d[(bool) 0.5 = true ? 1 : -1];
+              /* See body of main program for 'e'.  */
+-             char f[(_Bool) 0.0 == false ? 1 : -1];
++             char f[(_Bool) 0.0 = false ? 1 : -1];
+              char g[true];
+              char h[sizeof (_Bool)];
+              char i[sizeof s.t];
+@@ -6120,7 +6120,7 @@ else
+              /* The following fails for
+                 HP aC++/ANSI C B3910B A.05.55 [Dec 04 2003]. */
+              _Bool n[m];
+-             char o[sizeof n == m * sizeof n[0] ? 1 : -1];
++             char o[sizeof n = m * sizeof n[0] ? 1 : -1];
+              char p[-1 - (_Bool) 0 < 0 && -1 - (bool) 0 < 0 ? 1 : -1];
+              /* Catch a bug in an HP-UX C compiler.  See
+                 http://gcc.gnu.org/ml/gcc-patches/2003-12/msg02303.html
+@@ -7161,7 +7161,7 @@ fi
+ 		{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: ZSTD compression library not present or not recent enough. Compiling without ZSTD support. Install libzstd-dev(el) or use --enable-embedded-zstd" >&5
+ $as_echo "$as_me: WARNING: ZSTD compression library not present or not recent enough. Compiling without ZSTD support. Install libzstd-dev(el) or use --enable-embedded-zstd" >&2;}
+ 	fi
+-	 if test "x$HAS_ZSTD_LIB" == "x1" && test "x$HAS_ZSTD_HEADER" == "x1"; then
++	 if test "x$HAS_ZSTD_LIB" = "x1" && test "x$HAS_ZSTD_HEADER" = "x1"; then
+   WITH_ZSTD_TRUE=
+   WITH_ZSTD_FALSE='#'
+ else
+@@ -7585,14 +7585,14 @@ _ACEOF
+                  _libcurl_protocols="$_libcurl_protocols HTTPS"
+ 
+                  # FTPS wasn't standards-compliant until version
+-                 # 7.11.0 (0x070b00 == 461568)
++                 # 7.11.0 (0x070b00 = 461568)
+                  if test $_libcurl_version -ge 461568; then
+                     _libcurl_protocols="$_libcurl_protocols FTPS"
+                  fi
+               fi
+ 
+               # RTSP, IMAP, POP3 and SMTP were added in
+-              # 7.20.0 (0x071400 == 463872)
++              # 7.20.0 (0x071400 = 463872)
+               if test $_libcurl_version -ge 463872; then
+                  _libcurl_protocols="$_libcurl_protocols RTSP IMAP POP3 SMTP"
+               fi
+@@ -7636,7 +7636,7 @@ _ACEOF
+ 
+ fi
+ 
+-if test "x$with_embedded_sqlite3" == "xno"
++if test "x$with_embedded_sqlite3" = "xno"
+ then
+ 
+ 
+@@ -7794,7 +7794,7 @@ $as_echo "#define HAVE_SQLITE3 /**/" >>c
+ fi
+ fi
+ 
+-if test "x$with_embedded_lua" == "xno"
++if test "x$with_embedded_lua" = "xno"
+ then
+ 	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for a sed that does not truncate output" >&5
+ $as_echo_n "checking for a sed that does not truncate output... " >&6; }
+@@ -7880,7 +7880,7 @@ $as_echo_n "checking if $LUA is a Lua in
+       _ax_lua_factorial=`$LUA 2>/dev/null -e '
+     -- a simple factorial
+     function fact (n)
+-      if n == 0 then
++      if n = 0 then
+         return 1
+       else
+         return n * fact(n-1)
+@@ -7942,7 +7942,7 @@ else
+       _ax_lua_factorial=`$ax_cv_pathless_LUA 2>/dev/null -e '
+     -- a simple factorial
+     function fact (n)
+-      if n == 0 then
++      if n = 0 then
+         return 1
+       else
+         return n * fact(n-1)
+@@ -8092,9 +8092,9 @@ fi
+     -- get the path based on search type
+     local searchtype = "script"
+     local paths = ""
+-    if searchtype == "script" then
++    if searchtype = "script" then
+       paths = (package and package.path) or LUA_PATH
+-    elseif searchtype == "module" then
++    elseif searchtype = "module" then
+       paths = (package and package.cpath) or LUA_CPATH
+     end
+     -- search for the prefix
+@@ -8149,9 +8149,9 @@ fi
+     -- get the path based on search type
+     local searchtype = "module"
+     local paths = ""
+-    if searchtype == "script" then
++    if searchtype = "script" then
+       paths = (package and package.path) or LUA_PATH
+-    elseif searchtype == "module" then
++    elseif searchtype = "module" then
+       paths = (package and package.cpath) or LUA_CPATH
+     end
+     -- search for the prefix
+@@ -8650,7 +8650,7 @@ fi
+ 
+ fi
+ 
+-if test "x$with_embedded_lmdb" == "xno"
++if test "x$with_embedded_lmdb" = "xno"
+ then
+ 	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing mdb_env_set_mapsize" >&5
+ $as_echo_n "checking for library containing mdb_env_set_mapsize... " >&6; }
+@@ -10294,7 +10296,7 @@ cat >>$CONFIG_STATUS <<_ACEOF || ac_writ
+ /^[\t ]*#[\t ]*(define|undef)[\t ]+$ac_word_re([\t (]|\$)/ {
+   line = \$ 0
+   split(line, arg, " ")
+-  if (arg[1] == "#") {
++  if (arg[1] = "#") {
+     defundef = arg[2]
+     mac1 = arg[3]
+   } else {
+@@ -10312,7 +10314,7 @@ cat >>$CONFIG_STATUS <<_ACEOF || ac_writ
+     # Replace #undef with comments.  This is necessary, for example,
+     # in the case of _POSIX_SOURCE, which is predefined and required
+     # on some systems where configure will not decide to define it.
+-    if (defundef == "undef") {
++    if (defundef = "undef") {
+       print "/*", prefix defundef, macro, "*/"
+       next
+     }
+@@ -10807,7 +10809,7 @@ if test "$no_recursion" != yes; then
+     # parts of a large source tree are present.
+     test -d "$srcdir/$ac_dir" || continue
+ 
+-    ac_msg="=== configuring in $ac_dir (`pwd`/$ac_dir)"
++    ac_msg="== configuring in $ac_dir (`pwd`/$ac_dir)"
+     $as_echo "$as_me:${as_lineno-$LINENO}: $ac_msg" >&5
+     $as_echo "$ac_msg" >&6
+     as_dir="$ac_dir"; as_fn_mkdir_p

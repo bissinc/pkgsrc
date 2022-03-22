@@ -1,0 +1,7 @@
+$NetBSD$
+
+BLAKE2s (openbgpd-portable/7.2-a26095cd1f780b29d3b6fc41278d8035d48af80d.tar.gz) = a043e16563af92c5e154f39c02aec3adfd7d567dcabfda64986880edb38e9a2d
+SHA512 (openbgpd-portable/7.2-a26095cd1f780b29d3b6fc41278d8035d48af80d.tar.gz) = 654ea3b4dcaa790ba49643d6bbcfcbaddcf300ce4af7fd4f75a4f29327cb48c53ccf2f671e5dee84e65feacdeaea47c5ffc25638cf208e371a0fa05ae55c4a23
+Size (openbgpd-portable/7.2-a26095cd1f780b29d3b6fc41278d8035d48af80d.tar.gz) = 70033 bytes
+SHA1 (patch-autogen.sh) = 5c633df16fe5db2262def776daf181eebfb0ef61
+SHA1 (patch-configure) = 68e54747ab943bf9b2a52016d149466eba4a396e

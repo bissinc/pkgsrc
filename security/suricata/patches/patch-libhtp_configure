@@ -1,0 +1,178 @@
+$NetBSD$
+
+Remove == for shell portability
+
+--- libhtp/configure.orig	2021-11-17 16:07:27.000000000 +0000
++++ libhtp/configure
+@@ -3798,14 +3798,14 @@ static char *f (char * (*g) (char **, in
+    These don't provoke an error unfortunately, instead are silently treated
+    as 'x'.  The following induces an error, until -std is added to get
+    proper ANSI mode.  Curiously '\x00'!='x' always comes out true, for an
+-   array size at least.  It's necessary to write '\x00'==0 to get something
++   array size at least.  It's necessary to write '\x00'=0 to get something
+    that's true only with -std.  */
+-int osf4_cc_array ['\x00' == 0 ? 1 : -1];
++int osf4_cc_array ['\x00' = 0 ? 1 : -1];
+ 
+ /* IBM C 6 for AIX is almost-ANSI by default, but it replaces macro parameters
+    inside strings and character constants.  */
+ #define FOO(x) 'x'
+-int xlc6_cc_array[FOO(a) == 'x' ? 1 : -1];
++int xlc6_cc_array[FOO(a) = 'x' ? 1 : -1];
+ 
+ int test (int i, double x);
+ struct s1 {int (*f) (int a);};
+@@ -8188,7 +8188,7 @@ else
+ /* end confdefs.h.  */
+ #include <ctype.h>
+ #include <stdlib.h>
+-#if ((' ' & 0x0FF) == 0x020)
++#if ((' ' & 0x0FF) = 0x020)
+ # define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
+ # define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))
+ #else
+@@ -9880,9 +9880,9 @@ _LT_EOF
+ 	# it in the Import File for the 'aix-soname' feature, so we have
+ 	# to replace the "-B" option with "-P" for AIX nm.
+ 	if $NM -V 2>&1 | $GREP 'GNU' > /dev/null; then
+-	  export_symbols_cmds='$NM -Bpg $libobjs $convenience | awk '\''{ if (((\$ 2 == "T") || (\$ 2 == "D") || (\$ 2 == "B") || (\$ 2 == "W")) && (substr(\$ 3,1,1) != ".")) { if (\$ 2 == "W") { print \$ 3 " weak" } else { print \$ 3 } } }'\'' | sort -u > $export_symbols'
++	  export_symbols_cmds='$NM -Bpg $libobjs $convenience | awk '\''{ if (((\$ 2 = "T") || (\$ 2 = "D") || (\$ 2 = "B") || (\$ 2 = "W")) && (substr(\$ 3,1,1) != ".")) { if (\$ 2 = "W") { print \$ 3 " weak" } else { print \$ 3 } } }'\'' | sort -u > $export_symbols'
+ 	else
+-	  export_symbols_cmds='`func_echo_all $NM | $SED -e '\''s/B\([^B]*\)$/P\1/'\''` -PCpgl $libobjs $convenience | awk '\''{ if (((\$ 2 == "T") || (\$ 2 == "D") || (\$ 2 == "B") || (\$ 2 == "W") || (\$ 2 == "V") || (\$ 2 == "Z")) && (substr(\$ 1,1,1) != ".")) { if ((\$ 2 == "W") || (\$ 2 == "V") || (\$ 2 == "Z")) { print \$ 1 " weak" } else { print \$ 1 } } }'\'' | sort -u > $export_symbols'
++	  export_symbols_cmds='`func_echo_all $NM | $SED -e '\''s/B\([^B]*\)$/P\1/'\''` -PCpgl $libobjs $convenience | awk '\''{ if (((\$ 2 = "T") || (\$ 2 = "D") || (\$ 2 = "B") || (\$ 2 = "W") || (\$ 2 = "V") || (\$ 2 = "Z")) && (substr(\$ 1,1,1) != ".")) { if ((\$ 2 = "W") || (\$ 2 = "V") || (\$ 2 = "Z")) { print \$ 1 " weak" } else { print \$ 1 } } }'\'' | sort -u > $export_symbols'
+ 	fi
+ 	aix_use_runtimelinking=no
+ 
+@@ -10998,10 +10998,10 @@ BEGIN {RS = " "; FS = "/|\n";} {
+   lt_count = 0;
+   for (lt_i = NF; lt_i > 0; lt_i--) {
+     if ($lt_i != "" && $lt_i != ".") {
+-      if ($lt_i == "..") {
++      if ($lt_i = "..") {
+         lt_count++;
+       } else {
+-        if (lt_count == 0) {
++        if (lt_count = 0) {
+           lt_foo = "/" $lt_i lt_foo;
+         } else {
+           lt_count--;
+@@ -11010,7 +11010,7 @@ BEGIN {RS = " "; FS = "/|\n";} {
+     }
+   }
+   if (lt_foo != "") { lt_freq[lt_foo]++; }
+-  if (lt_freq[lt_foo] == 1) { print lt_foo; }
++  if (lt_freq[lt_foo] = 1) { print lt_foo; }
+ }'`
+   # AWK program above erroneously prepends '/' to C:/dos/paths
+   # for these hosts.
+@@ -11071,7 +11071,7 @@ aix[4-9]*)
+     # development snapshots of GCC prior to 3.0.
+     case $host_os in
+       aix4 | aix4.[01] | aix4.[01].*)
+-      if { echo '#if __GNUC__ > 2 || (__GNUC__ == 2 && __GNUC_MINOR__ >= 97)'
++      if { echo '#if __GNUC__ > 2 || (__GNUC__ = 2 && __GNUC_MINOR__ >= 97)'
+ 	   echo ' yes '
+ 	   echo '#endif'; } | $CC -E - | $GREP yes > /dev/null; then
+ 	:
+@@ -12281,7 +12281,7 @@ else
+ 
+ /* When -fvisibility=hidden is used, assume the code has been annotated
+    correspondingly for the symbols needed.  */
+-#if defined __GNUC__ && (((__GNUC__ == 3) && (__GNUC_MINOR__ >= 3)) || (__GNUC__ > 3))
++#if defined __GNUC__ && (((__GNUC__ = 3) && (__GNUC_MINOR__ >= 3)) || (__GNUC__ > 3))
+ int fnord () __attribute__((visibility("default")));
+ #endif
+ 
+@@ -12387,7 +12387,7 @@ else
+ 
+ /* When -fvisibility=hidden is used, assume the code has been annotated
+    correspondingly for the symbols needed.  */
+-#if defined __GNUC__ && (((__GNUC__ == 3) && (__GNUC_MINOR__ >= 3)) || (__GNUC__ > 3))
++#if defined __GNUC__ && (((__GNUC__ = 3) && (__GNUC_MINOR__ >= 3)) || (__GNUC__ > 3))
+ int fnord () __attribute__((visibility("default")));
+ #endif
+ 
+@@ -14830,9 +14830,9 @@ $as_echo_n "checking whether the $compil
+     # it in the Import File for the 'aix-soname' feature, so we have
+     # to replace the "-B" option with "-P" for AIX nm.
+     if $NM -V 2>&1 | $GREP 'GNU' > /dev/null; then
+-      export_symbols_cmds_CXX='$NM -Bpg $libobjs $convenience | awk '\''{ if (((\$ 2 == "T") || (\$ 2 == "D") || (\$ 2 == "B") || (\$ 2 == "W")) && (substr(\$ 3,1,1) != ".")) { if (\$ 2 == "W") { print \$ 3 " weak" } else { print \$ 3 } } }'\'' | sort -u > $export_symbols'
++      export_symbols_cmds_CXX='$NM -Bpg $libobjs $convenience | awk '\''{ if (((\$ 2 = "T") || (\$ 2 = "D") || (\$ 2 = "B") || (\$ 2 = "W")) && (substr(\$ 3,1,1) != ".")) { if (\$ 2 = "W") { print \$ 3 " weak" } else { print \$ 3 } } }'\'' | sort -u > $export_symbols'
+     else
+-      export_symbols_cmds_CXX='`func_echo_all $NM | $SED -e '\''s/B\([^B]*\)$/P\1/'\''` -PCpgl $libobjs $convenience | awk '\''{ if (((\$ 2 == "T") || (\$ 2 == "D") || (\$ 2 == "B") || (\$ 2 == "W") || (\$ 2 == "V") || (\$ 2 == "Z")) && (substr(\$ 1,1,1) != ".")) { if ((\$ 2 == "W") || (\$ 2 == "V") || (\$ 2 == "Z")) { print \$ 1 " weak" } else { print \$ 1 } } }'\'' | sort -u > $export_symbols'
++      export_symbols_cmds_CXX='`func_echo_all $NM | $SED -e '\''s/B\([^B]*\)$/P\1/'\''` -PCpgl $libobjs $convenience | awk '\''{ if (((\$ 2 = "T") || (\$ 2 = "D") || (\$ 2 = "B") || (\$ 2 = "W") || (\$ 2 = "V") || (\$ 2 = "Z")) && (substr(\$ 1,1,1) != ".")) { if ((\$ 2 = "W") || (\$ 2 = "V") || (\$ 2 = "Z")) { print \$ 1 " weak" } else { print \$ 1 } } }'\'' | sort -u > $export_symbols'
+     fi
+     ;;
+   pw32*)
+@@ -15050,7 +15050,7 @@ aix[4-9]*)
+     # development snapshots of GCC prior to 3.0.
+     case $host_os in
+       aix4 | aix4.[01] | aix4.[01].*)
+-      if { echo '#if __GNUC__ > 2 || (__GNUC__ == 2 && __GNUC_MINOR__ >= 97)'
++      if { echo '#if __GNUC__ > 2 || (__GNUC__ = 2 && __GNUC_MINOR__ >= 97)'
+ 	   echo ' yes '
+ 	   echo '#endif'; } | $CC -E - | $GREP yes > /dev/null; then
+ 	:
+@@ -16969,7 +16969,7 @@ int main ()
+         size_t res = iconv (cd_utf8_to_88591,
+                             (char **) &inptr, &inbytesleft,
+                             &outptr, &outbytesleft);
+-        if (res == 0)
++        if (res = 0)
+           return 1;
+       }
+   }
+@@ -16988,7 +16988,7 @@ int main ()
+         size_t res = iconv (cd_ascii_to_88591,
+                             (char **) &inptr, &inbytesleft,
+                             &outptr, &outbytesleft);
+-        if (res == 0)
++        if (res = 0)
+           return 1;
+       }
+   }
+@@ -17015,13 +17015,13 @@ int main ()
+   /* Test against HP-UX 11.11 bug: No converter from EUC-JP to UTF-8 is
+      provided.  */
+   if (/* Try standardized names.  */
+-      iconv_open ("UTF-8", "EUC-JP") == (iconv_t)(-1)
++      iconv_open ("UTF-8", "EUC-JP") = (iconv_t)(-1)
+       /* Try IRIX, OSF/1 names.  */
+-      && iconv_open ("UTF-8", "eucJP") == (iconv_t)(-1)
++      && iconv_open ("UTF-8", "eucJP") = (iconv_t)(-1)
+       /* Try AIX names.  */
+-      && iconv_open ("UTF-8", "IBM-eucJP") == (iconv_t)(-1)
++      && iconv_open ("UTF-8", "IBM-eucJP") = (iconv_t)(-1)
+       /* Try HP-UX names.  */
+-      && iconv_open ("utf8", "eucJP") == (iconv_t)(-1))
++      && iconv_open ("utf8", "eucJP") = (iconv_t)(-1))
+     return 1;
+   return 0;
+ }
+@@ -17153,7 +17153,7 @@ rm -f core conftest.err conftest.$ac_obj
+     conftest$ac_exeext conftest.$ac_ext
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_func_iconvctl" >&5
+ $as_echo "$ac_cv_func_iconvctl" >&6; }
+-if test "$ac_cv_func_iconvctl" == yes; then
++if test "$ac_cv_func_iconvctl" = yes; then
+ 
+ $as_echo "#define HAVE_ICONVCTL 1" >>confdefs.h
+ 
+@@ -18821,7 +18821,7 @@ cat >>$CONFIG_STATUS <<_ACEOF || ac_writ
+ /^[\t ]*#[\t ]*(define|undef)[\t ]+$ac_word_re([\t (]|\$)/ {
+   line = \$ 0
+   split(line, arg, " ")
+-  if (arg[1] == "#") {
++  if (arg[1] = "#") {
+     defundef = arg[2]
+     mac1 = arg[3]
+   } else {
+@@ -18839,7 +18839,7 @@ cat >>$CONFIG_STATUS <<_ACEOF || ac_writ
+     # Replace #undef with comments.  This is necessary, for example,
+     # in the case of _POSIX_SOURCE, which is predefined and required
+     # on some systems where configure will not decide to define it.
+-    if (defundef == "undef") {
++    if (defundef = "undef") {
+       print "/*", prefix defundef, macro, "*/"
+       next
+     }

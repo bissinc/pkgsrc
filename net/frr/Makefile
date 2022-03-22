@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.9 2021/09/08 11:12:37 kardel Exp $
 
 GITHUB_PROJECT=	frr
-VERSION=	8.0.1
+VERSION=	7.5.1
 GITHUB_TAG=	frr-${VERSION}
 DISTNAME=	frr-${VERSION}
 CATEGORIES=	net
@@ -100,7 +100,9 @@ pre-configure:
 post-build:
 	cd ${WRKSRC} && rm -f doc/user/_build/html/_static/jquery-*.js doc/user/_build/html/_static/underscore-*.js
 
-.include "../../devel/libyang2/buildlink3.mk"
+.include "../../joyent/libcxx6/buildlink3.mk"
+.include "../../devel/glib2/buildlink3.mk"
+#.include "../../devel/libyang2/buildlink3.mk"
 .include "../../devel/readline/buildlink3.mk"
 .include "../../lang/python/application.mk"
 .include "../../net/libcares/buildlink3.mk"

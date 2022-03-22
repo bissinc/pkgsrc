@@ -36,4 +36,5 @@ CMAKE_ARGS+=	-DENABLE_LYD_PRIV=ON
 
 .include "../../devel/pcre/buildlink3.mk"
 
+.include "../../joyent/libcxx6/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

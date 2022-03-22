@@ -1,0 +1,7 @@
+$NetBSD$
+
+SHA1 (freeswitch-1.10.7.tar.gz) = fbb6279875007c958adf1654d03a2ea4ceffdabd
+RMD160 (freeswitch-1.10.7.tar.gz) = 15e2dbf073c077840f247fb1460a3d530bd4fb0e
+SHA512 (freeswitch-1.10.7.tar.gz) = dc9ffa595dd3eb65a50959653f41b937ffa9a0fb0b4131448539778dcad86ad54b771ccc9ddba546af1359bd841d5ada8fb8f9b12cc148884bb1d8fc4cc6874a
+Size (freeswitch-1.10.7.tar.gz) = 32366349 bytes
+SHA1 (patch-docker_base__image_healthcheck.sh) = 517f65c2a6be6424fa0a44e6ac22d1eed59e6021

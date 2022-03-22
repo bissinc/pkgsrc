@@ -1,0 +1,59 @@
+$NetBSD$
+
+--- Makefile.in.orig	2021-12-25 17:03:20.000000000 +0000
++++ Makefile.in
+@@ -1295,30 +1295,30 @@ urbackup_mount_helper_LDFLAGS = $(SUID_L
+ cryptoplugin_headers = cryptoplugin/AESEncryption.h cryptoplugin/AESDecryption.h cryptoplugin/IAESDecryption.h cryptoplugin/ICryptoFactory.h cryptoplugin/pluginmgr.h cryptoplugin/IAESEncryption.h cryptoplugin/CryptoFactory.h cryptoplugin/IZlibCompression.h cryptoplugin/IZlibDecompression.h cryptoplugin/ZlibCompression.h cryptoplugin/ZlibDecompression.h cryptoplugin/cryptopp_inc.h cryptoplugin/AESGCMDecryption.h cryptoplugin/AESGCMEncryption.h cryptoplugin/ECDHKeyExchange.h cryptoplugin/IAESGCMDecryption.h cryptoplugin/IAESGCMEncryption.h cryptoplugin/IECDHKeyExchange.h
+ fileservplugin_headers = fileservplugin/bufmgr.h fileservplugin/CUDPThread.h fileservplugin/FileServFactory.h fileservplugin/IFileServ.h fileservplugin/packet_ids.h fileservplugin/socket_header.h fileservplugin/CriticalSection.h fileservplugin/FileServ.h fileservplugin/log.h fileservplugin/pluginmgr.h   fileservplugin/CClientThread.h fileservplugin/CTCPFileServ.h fileservplugin/IFileServFactory.h fileservplugin/map_buffer.h fileservplugin/settings.h fileservplugin/types.h fileservplugin/chunk_settings.h fileservplugin/ChunkSendThread.h fileservplugin/PipeFile.h fileservplugin/PipeSessions.h  fileservplugin/PipeFileBase.h fileservplugin/IPermissionCallback.h fileservplugin/FileMetadataPipe.h fileservplugin/PipeFileTar.h fileservplugin/PipeFileExt.h
+ fsimageplugin_headers = fsimageplugin/filesystem.h fsimageplugin/FSImageFactory.h fsimageplugin/IFilesystem.h fsimageplugin/IFSImageFactory.h fsimageplugin/IVHDFile.h fsimageplugin/pluginmgr.h fsimageplugin/vhdfile.h fsimageplugin/fs/ntfs.h fsimageplugin/fs/unknown.h fsimageplugin/CompressedFile.h fsimageplugin/LRUMemCache.h common/miniz.h fsimageplugin/cowfile.h fsimageplugin/FileWrapper.h fsimageplugin/ClientBitmap.h 
+-tclap_headers = \
+-			 tclap/CmdLineInterface.h \
+-			 tclap/ArgException.h \
+-			 tclap/CmdLine.h \
+-			 tclap/XorHandler.h \
+-			 tclap/MultiArg.h \
+-			 tclap/UnlabeledMultiArg.h \
+-			 tclap/ValueArg.h \
+-			 tclap/UnlabeledValueArg.h \
+-			 tclap/Visitor.h tclap/Arg.h \
+-			 tclap/HelpVisitor.h \
+-			 tclap/SwitchArg.h \
+-			 tclap/MultiSwitchArg.h \
+-			 tclap/VersionVisitor.h \
+-			 tclap/IgnoreRestVisitor.h \
+-			 tclap/CmdLineOutput.h \
+-			 tclap/StdOutput.h \
+-			 tclap/DocBookOutput.h \
+-			 tclap/ZshCompletionOutput.h \
+-			 tclap/OptionalUnlabeledTracker.h \
+-			 tclap/Constraint.h \
+-			 tclap/ValuesConstraint.h \
+-			 tclap/ArgTraits.h \
+-			 tclap/StandardTraits.h
++#tclap_headers = \
++			 ${prefix}/include/tclap/CmdLineInterface.h \
++			 ${prefix}/include/tclap/ArgException.h \
++			 ${prefix}/include/tclap/CmdLine.h \
++			 ${prefix}/include/tclap/XorHandler.h \
++			 ${prefix}/include/tclap/MultiArg.h \
++			 ${prefix}/include/tclap/UnlabeledMultiArg.h \
++			 ${prefix}/include/tclap/ValueArg.h \
++			 ${prefix}/include/tclap/UnlabeledValueArg.h \
++			 ${prefix}/include/tclap/Visitor.h tclap/Arg.h \
++			 ${prefix}/include/tclap/HelpVisitor.h \
++			 ${prefix}/include/tclap/SwitchArg.h \
++			 ${prefix}/include/tclap/MultiSwitchArg.h \
++			 ${prefix}/include/tclap/VersionVisitor.h \
++			 ${prefix}/include/tclap/IgnoreRestVisitor.h \
++			 ${prefix}/include/tclap/CmdLineOutput.h \
++			 ${prefix}/include/tclap/StdOutput.h \
++			 ${prefix}/include/tclap/DocBookOutput.h \
++			 ${prefix}/include/tclap/ZshCompletionOutput.h \
++			 ${prefix}/include/tclap/OptionalUnlabeledTracker.h \
++			 ${prefix}/include/tclap/Constraint.h \
++			 ${prefix}/include/tclap/ValuesConstraint.h \
++			 ${prefix}/include/tclap/ArgTraits.h \
++			 ${prefix}/include/tclap/StandardTraits.h
+ 
+ zstd_headers = \
+ 		external/zstd/common/bitstream.h \

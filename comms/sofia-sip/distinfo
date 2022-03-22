@@ -1,0 +1,7 @@
+$NetBSD$
+
+BLAKE2s (sofia-sip/v1.13.7.tar.gz) = 5828d67b0353b5d0bdf2280d83daea5bdfc33daf67481bd8dd86de612c347c41
+SHA512 (sofia-sip/v1.13.7.tar.gz) = 51ca187b4ab15ed06e408c9fac89d5c76ebb1564ec9749be4f844d18f09e57f9e212e4c941b2bd76af660bd9d5eb1a5511a7195fd5010e10c5a032ff5f7c02d1
+Size (sofia-sip/v1.13.7.tar.gz) = 2548920 bytes
+SHA1 (patch-libsofia-sip-ua_msg_msg__parser.awk) = 9a3b19be5626be829224466ea9f7299e69d0855b
+SHA1 (patch-libsofia-sip-ua_su_tag__dll.awk) = 8d1e5c28492ed1b6c1d07ad7404d316f9c2595a8

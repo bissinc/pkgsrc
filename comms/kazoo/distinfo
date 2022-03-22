@@ -1,0 +1,6 @@
+$NetBSD$
+
+BLAKE2s (kazoo/4.3.142.tar.gz) = 5c06963f1c6f64fb28d6ca463adce20019c40b5451eb6427fd42711fa618d2cf
+SHA512 (kazoo/4.3.142.tar.gz) = c126c79cdf8d41694c6e2b1aa1574443a566535648ee0fdfe0d29943b9ec20801b9df642993f916ff32523b9c70ec28a51edea6dabb3f808eb252a9be036a51e
+Size (kazoo/4.3.142.tar.gz) = 9916542 bytes
+SHA1 (patch-Makefile) = 9589fdb7092bae2d44cd3286f0c8d4a6537fe39f

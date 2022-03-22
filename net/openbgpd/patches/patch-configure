@@ -1,0 +1,30 @@
+$NetBSD$
+
+--- configure.orig	2022-03-21 23:15:57.700838693 +0000
++++ configure
+@@ -5501,11 +5501,11 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+ for as_dir in $PATH
+ do
+   IFS=$as_save_IFS
+-  case $as_dir in #(((
+-    ''
+- as_dir=./ ;;
+-    */) ;;
+-    *) as_dir=$as_dir/ ;;
++  case $as_dir in 
++ as_dir=./ )
++    ;;
++    as_dir=$as_dir/ )
++    ;;
+   esac
+     for ac_exec_ext in '' $ac_executable_extensions; do
+   if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+@@ -6401,8 +6401,6 @@ else
+   am__fastdepCC_FALSE=
+ fi
+ 
+-)
+-
+ case `pwd` in
+   *\ * | *\	*)
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Libtool does not cope well with whitespace in \`pwd\`" >&5

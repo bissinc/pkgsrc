@@ -8,6 +8,9 @@ MASTER_SITES=	ftp://ftp.astron.com/pub/people/christos/
 MAINTAINER=	christos@NetBSD.org
 COMMENT=	Convert strings from/to a visual format
 
+CFLAGS.SunOS+=  -Du_int64_t=uint64_t -Du_int32_t=uint32_t
+#LDFLAGS.SunOS+=	-lmath
+
 USE_FEATURES+=		cdefs
 USE_TOOLS=		nroff
 USE_BSD_MAKEFILE=	yes

@@ -1,0 +1,5 @@
+$NetBSD$
+
+BLAKE2s (imsg-compat/6.8.2.tar.gz) = 770ff94f19557a2b84713f17b0f6e8209c31ebee5069010048f03cd465b331ff
+SHA512 (imsg-compat/6.8.2.tar.gz) = 596d6ce353cecf957d6e680a3d7f3335b40fa7ea738e2f771a4a06878da29d56c1cddf5c8c7d05ac615afe56eab159bf33811a0cf35fbe0d07883a6c91047069
+Size (imsg-compat/6.8.2.tar.gz) = 11672 bytes

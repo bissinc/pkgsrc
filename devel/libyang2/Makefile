@@ -35,5 +35,7 @@ pre-configure:
 CMAKE_ARGS?=	-DCMAKE_BUILD_TYPE:String="Release"
 
 .include "../../devel/pcre2/buildlink3.mk"
+.include "../../devel/glib2/buildlink3.mk"
+.include "../../joyent/libcxx6/buildlink3.mk"
 
 .include "../../mk/bsd.pkg.mk"

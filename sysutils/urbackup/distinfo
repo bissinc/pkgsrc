@@ -1,0 +1,12 @@
+$NetBSD$
+
+SHA1 (urbackup-server-2.4.14.tar.gz) = 5576bb916347dfe63ccf83c1eb0859b2baef4a47
+RMD160 (urbackup-server-2.4.14.tar.gz) = 3b979a1b8f390547d377423efc92ad9900afdf96
+SHA512 (urbackup-server-2.4.14.tar.gz) = b67ad5fdf31d6a224a9870c3bf5af9e9ce58cecbedd8e287cd91a5da0a9763650caca74c9ff5a330bb590d0508a20e3c834a8dc00b562c1ffc297607a3654f66
+Size (urbackup-server-2.4.14.tar.gz) = 8868199 bytes
+SHA1 (patch-Makefile.in) = 44d380fdcddc8b50a10df042f502af1d91b7f2f9
+SHA1 (patch-configure) = b8a95f2aba40e74a870e87eb52293b5bb1b2fff8
+SHA1 (patch-file__linux.cpp) = bf75981ef6d735f199c32206287a4581ce79d0c0
+SHA1 (patch-md5.h) = e5220cc4cc350fa93beffde29cdf25844c99f81f
+SHA1 (patch-urbackupcommon_sha2_sha2.h) = d20c8c6c2aa798a894e1b418793880e9a73e2531
+SHA1 (patch-urbackupserver_cmdline__preprocessor.cpp) = 33ae76b6a323be3126d4662c650ca0649a02c0b1
